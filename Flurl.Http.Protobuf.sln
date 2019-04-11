@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BAC9E723-3FAA-4F71-94E5-F70F362EF652}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flurl.Http.Protobuf", "src\Flurl.Http.Protobuf\Flurl.Http.Protobuf.csproj", "{A1DBC2DC-7523-4765-A10E-776FD6B9D06E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flurl.Http.Protobuf.Tests", "test\Flurl.Http.Protobuf.Tests\Flurl.Http.Protobuf.Tests.csproj", "{155AB459-E0CA-46C1-B45A-E92C930172AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1DBC2DC-7523-4765-A10E-776FD6B9D06E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1DBC2DC-7523-4765-A10E-776FD6B9D06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1DBC2DC-7523-4765-A10E-776FD6B9D06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1DBC2DC-7523-4765-A10E-776FD6B9D06E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{155AB459-E0CA-46C1-B45A-E92C930172AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{155AB459-E0CA-46C1-B45A-E92C930172AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{155AB459-E0CA-46C1-B45A-E92C930172AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{155AB459-E0CA-46C1-B45A-E92C930172AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A1DBC2DC-7523-4765-A10E-776FD6B9D06E} = {BAC9E723-3FAA-4F71-94E5-F70F362EF652}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F31BED1-1D7F-470F-8A65-72E37311738A}
+	EndGlobalSection
+EndGlobal
