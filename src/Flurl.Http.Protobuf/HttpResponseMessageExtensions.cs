@@ -38,14 +38,14 @@ namespace Flurl.Http.Protobuf
 
             try
             {
-                using (var stream = await resp.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                using (var stream = await resp.Content.ReadAsStreamAsync())
                 {
                     return streamHandler(call, stream);
                 }
             }
             catch (Exception ex)
             {
-                var s = await resp.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var s = await resp.Content.ReadAsStringAsync();
                 throw new FlurlHttpException(call, s, ex);
             }
         }
