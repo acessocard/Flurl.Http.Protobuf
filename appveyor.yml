@@ -29,4 +29,8 @@ test_script:
   - cmd: dotnet test /p:CollectCoverage=true /p:Exclude="[NUnit3.*]*"
 on_finish :
   # any cleanup in here
-deploy: off
+deploy:
+  provider: Environment
+  name: Production
+  on:
+    branch: master
