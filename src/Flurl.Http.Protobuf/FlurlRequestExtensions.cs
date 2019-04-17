@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,26 +6,6 @@ namespace Flurl.Http.Protobuf
 {
     public static class FlurlRequestExtensions
     {
-        private static string GetMediaType(this IHttpSettingsContainer request)
-        {
-            var acceptHeaders = request.Headers
-                .Where(x => x.Key == "Accept")
-                .ToList();
-
-            if (!acceptHeaders.Any() || acceptHeaders.All(x => x.Value == null))
-            {
-                return "application/x-protobuf";
-            }
-
-            var mediaTypes = acceptHeaders
-                .Where(x => x.Value != null)
-                .SelectMany(x => x.Value.ToString().Split(','))
-                .Select(x => x.Trim())
-                .ToList();
-
-            return mediaTypes.First(x => x.IndexOf("protobuf", StringComparison.OrdinalIgnoreCase) >= 0)
-                ?? mediaTypes.First();
-        }
         public static async Task<HttpResponseMessage> SendProtobufAsync(this IFlurlRequest request, HttpMethod httpMethod, object data, CancellationToken cancellationToken = default(CancellationToken), HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
         {
             var content = new ByteArrayContent(request.Settings.ProtobufSerializer().SerializeByte(data));
