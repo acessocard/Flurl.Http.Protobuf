@@ -1,8 +1,6 @@
-﻿using Flurl.Http.Content;
-using System;
+﻿using System;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -32,7 +30,7 @@ namespace Flurl.Http.Protobuf
         }
         public static async Task<HttpResponseMessage> SendProtobufAsync(this IFlurlRequest request, HttpMethod httpMethod, object data, CancellationToken cancellationToken = default(CancellationToken), HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
         {
-            var content = new CapturedStringContent(request.Settings.ProtobufSerializer().Serialize(data), Encoding.UTF8, request.GetMediaType());
+            var content = new ByteArrayContent(request.Settings.ProtobufSerializer().SerializeByte(data));
             return await request.SetHeaders().SendAsync(httpMethod, content, cancellationToken, completionOption);
         }
         public static Task<T> GetProtobufAsync<T>(this IFlurlRequest request, CancellationToken cancellationToken = default(CancellationToken), HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead) =>

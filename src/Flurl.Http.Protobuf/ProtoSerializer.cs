@@ -14,15 +14,6 @@ namespace Flurl.Http.Protobuf
                 return stream.ToArray();
             }
         }
-        public static T Deserialize<T>(byte[] data)
-        {
-            if (data == null)
-                return default(T);
-            using (var stream = new MemoryStream(data))
-            {
-                return ProtoBuf.Serializer.Deserialize<T>(stream);
-            }
-        }
         public static T Deserialize<T>(Stream data)
         {
             if (data == null)
