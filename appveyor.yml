@@ -25,7 +25,7 @@ test_script:
   - cmd: dotnet restore ./test/Flurl.Http.Protobuf.Tests/Flurl.Http.Protobuf.Tests.csproj --verbosity m
   # run the unit tests (requires changing into the test directory)
   - cmd: cd test/Flurl.Http.Protobuf.Tests
-  - cmd: dotnet test /p:CollectCoverage=true /p:Exclude="[NUnit3.*]*" /p:CoverletOutputFormat=opencover
+  - cmd: dotnet test /p:CollectCoverage=true /p:Exclude="[NUnit3.*]*" /p:Exclude="[*.Tests]*" /p:CoverletOutputFormat=opencover
   - cmd: codecov -f "coverage.opencover.xml"
 on_finish :
   # any cleanup in here
