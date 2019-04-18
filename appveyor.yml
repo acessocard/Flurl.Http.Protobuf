@@ -1,0 +1,37 @@
+version: '1.0.0-{branch}-{build}'
+image: Visual Studio 2017
+init:
+  - cmd: git config --global core.autocrlf true
+install:
+  - cmd: choco install codecov
+before_build:
+  # Display .NET Core version
+  - cmd: dotnet --version
+  # Display minimal restore text
+  - cmd: dotnet restore ./src/Flurl.Http.Protobuf/Flurl.Http.Protobuf.csproj --verbosity m
+build_script:
+  # output will be in ./src/bin/debug/netcoreapp1.1/publish
+  - cmd: dotnet build ./src/Flurl.Http.Protobuf/Flurl.Http.Protobuf.csproj --configuration Release
+after_build:
+  # For once the build has completed
+  - cmd: dotnet pack ./src/Flurl.Http.Protobuf/Flurl.Http.Protobuf.csproj --configuration Release
+artifacts:
+ - path: '**\*.nupkg'
+   name: Package
+   type: NuGetPackage
+clone_depth: 1
+test_script:
+  # restore packages for our unit tests
+  - cmd: dotnet restore ./test/Flurl.Http.Protobuf.Tests/Flurl.Http.Protobuf.Tests.csproj --verbosity m
+  # run the unit tests (requires changing into the test directory)
+  - cmd: cd test/Flurl.Http.Protobuf.Tests
+  - cmd: dotnet test /p:CollectCoverage=true /p:Exclude="[NUnit3.*]*" /p:Exclude="[*.Tests]*" /p:CoverletOutputFormat=opencover /p:CoverletOutput=../../coverage.opencover.xml
+  - cmd: cd ../../
+  - cmd: codecov -f "coverage.opencover.xml"
+on_finish :
+  # any cleanup in here
+deploy:
+  provider: Environment
+  name: Production
+  on:
+    branch: master
