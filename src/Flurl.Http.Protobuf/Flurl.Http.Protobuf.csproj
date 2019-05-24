@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net45;net46;netstandard2.0</TargetFrameworks>
-    <Version>2.4.1-alpha.2</Version>
+    <Version>2.4.1</Version>
     <Authors>Guilherme Baldini, Fabricio Nascimento</Authors>
     <Description>A fluent, portable, testable HTTP client library.</Description>
     <PackageId>Flurl.Http.Protobuf</PackageId>
